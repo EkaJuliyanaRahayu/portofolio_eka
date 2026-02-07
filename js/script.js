@@ -113,8 +113,10 @@ document.querySelectorAll(".icon").forEach(icon => {
    BACKGROUND ANIMATION (CANVAS)
 ================================ */
 
+document.addEventListener('DOMContentLoaded', () => {
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -150,3 +152,55 @@ window.addEventListener('resize', ()=>{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
+
+// Redirect ke halaman portfolio setelah 2,5 detik
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            window.location.href = "index.html"; 
+        }, 5500);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // garis animasi neon
+    let lines = [];
+    for(let i=0; i<50; i++){
+        lines.push({
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height,
+            speed: 0.5 + Math.random(),
+            length: 50 + Math.random()*150,
+            color: `rgba(110,92,255,${0.05 + Math.random()*0.2})`
+        });
+    }
+
+    function animate(){
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        lines.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.x, line.y);
+            ctx.lineTo(line.x + line.length, line.y);
+            ctx.strokeStyle = line.color;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            line.x += line.speed;
+            if(line.x > canvas.width) line.x = -line.length;
+        });
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', ()=>{
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+});
+

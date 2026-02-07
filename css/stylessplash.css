@@ -1,0 +1,101 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+}
+
+.splash-screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(135deg, #6e5cff, #99ccff, #ffffff);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    text-align: center;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Teks di tengah */
+.tech-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 40%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: floatText 2s ease-in-out infinite alternate;
+    z-index: 10;
+}
+
+/* Float animation */
+@keyframes floatText {
+    0% {transform: translate(-50%, -50%) translateY(0);}
+    100% {transform: translate(-50%, -50%) translateY(-15px);}
+}
+
+/* Glitch effect */
+.tech-text::after,
+.tech-text::before {
+    content: 'Welcome to My Portfolio';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #ff99ff;
+    clip: rect(0, 900px, 0, 0);
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.tech-text::before {
+    color: #99ffff;
+    animation-delay: 0.5s;
+}
+
+@keyframes glitch {
+    0% {clip: rect(0, 900px, 0, 0);}
+    10% {clip: rect(10px, 900px, 50px, 0);}
+    20% {clip: rect(20px, 900px, 60px, 0);}
+    30% {clip: rect(5px, 900px, 55px, 0);}
+    40% {clip: rect(15px, 900px, 45px, 0);}
+    50% {clip: rect(0px, 900px, 60px, 0);}
+    60% {clip: rect(10px, 900px, 50px, 0);}
+    70% {clip: rect(20px, 900px, 60px, 0);}
+    80% {clip: rect(5px, 900px, 55px, 0);}
+    90% {clip: rect(15px, 900px, 45px, 0);}
+    100% {clip: rect(0, 900px, 0, 0);}
+}
+
+/* Tombol masuk */
+.enter-button {
+    position: absolute;
+    top: 60%; /* di bawah tulisan */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.enter-button:hover {
+    background: rgba(255,255,255,0.3);
+    color: #6e5cff;
+    border-color: #6e5cff;
+    box-shadow: 0 0 15px rgba(110, 92, 255, 0.7);
+}
+
+/* animasi hero */

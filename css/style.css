@@ -3,7 +3,7 @@
 ----------------------------------- */
 body {
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #fcecff, #d8ecff, #fff9e6);
+    background: linear-gradient(135deg, #efecff, #d8ecff, #fff9e6);
     background-size: 400% 400%;
     animation: bgMove 12s ease infinite;
     margin: 0;
@@ -24,44 +24,80 @@ html {
 /* -----------------------------------
    NAVBAR
 ----------------------------------- */
+/* ================================
+   NAVBAR MODERN GLASSMORPHISM
+================================ */
 .navbar {
-    list-style: none;
+    width: 100%;
     display: flex;
     justify-content: center;
-    gap: 35px;
-    padding: 0px;
-    margin: 0;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(12px);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 0px 0;
+
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     position: sticky;
     top: 0;
-    z-index: 20;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    z-index: 999;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
+/* NAV LINKS */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 40px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #4a4a4a;
     font-size: 18px;
     font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
+
+    color: #2c2c54;
+    padding: 8px 14px;
+    border-radius: 10px;
+
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: white;
-    background: #a6b1ff;
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(166,177,255,0.7);
+/* Highlight bar animasi bawah */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #6c5ce7, #4ea8ff);
+    border-radius: 10px;
+    transition: width 0.3s ease;
 }
+
+.nav-links a:hover::after {
+    width: 60%;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+    color: #6c5ce7;
+    transform: translateY(-3px);
+}
+
+/* Active state (optional) */
+.nav-links a.active {
+    color: #6c5ce7;
+}
+
+.nav-links a.active::after {
+    width: 60%;
+}
+
 
 /* -----------------------------------
    CONTAINER
@@ -79,18 +115,29 @@ html {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* -----------------------------------
-   HERO SECTION
------------------------------------ */
 .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 70px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 80vh;
+    text-align: center;
+    overflow: hidden;
+    padding: 0 20px;
 }
 
-/* Floating pastel decorations */
+/* Canvas background */
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Floating pastel bubbles */
 .hero::before,
 .hero::after {
     content: "";
@@ -100,18 +147,18 @@ html {
     border-radius: 50%;
     filter: blur(30px);
     animation: floatBubble 9s infinite ease-in-out;
-    z-index: -1;
+    z-index: 0;
 }
 
 .hero::before {
     top: -60px;
-    left: -40px;
+    left: 10%;
     background: rgba(187, 222, 251, 0.6);
 }
 
 .hero::after {
     bottom: -80px;
-    right: -50px;
+    right: 10%;
     background: rgba(255, 204, 229, 0.6);
 }
 
@@ -121,43 +168,94 @@ html {
     100% { transform: translate(0); }
 }
 
-.hero-text h2 {
-    max-width: 600px;
-    font-size: 40px;
+/* Hero text */
+.hero-text {
+    position: relative;
+    z-index: 2; /* di atas canvas */
+}
+
+/* Hero H1 */
+.hero-text h1 {
+    font-family: 'Poppins', sans-serif; /* modern & clean */
+    font-size: 48px;
     font-weight: 700;
-    color: #2c2c54;
-    animation: glowText 2.5s infinite ease-in-out alternate;
+    color: #2c2c54; /* dark blue */
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-@keyframes glowText {
-    from { text-shadow: 0 0 8px rgba(0,0,0,0.15); }
-    to { text-shadow: 0 0 18px rgba(140,140,255,0.4); }
-}
-
+/* Highlight nama */
 .name-highlight {
-    color: #6c5ce7;
+    color: #6c5ce7; /* ungu cerah */
 }
 
+/* Hero H3 */
+.hero-text h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 600; /* lebih tebal */
+    margin-bottom: 20px;
+    text-align: center;
+
+    /* Gradasi teks */
+    background: linear-gradient(90deg, #6c5ce7, #4ea8ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Glow halus */
+    text-shadow: 0 0 8px rgba(76, 161, 255, 0.2);
+}
+
+
+/* Hero paragraph */
+.hero-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #3a3838;
+    max-width: 600px;
+    margin: 0 auto 25px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Animasi sederhana: float halus */
+.hero-text h1, .hero-text h3, .hero-text p {
+    animation: floatText 2s ease-in-out infinite alternate;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-5px); }
+}
+
+
+/* Buttons */
 .hero-buttons {
     display: flex;
-
+    justify-content: center;
     gap: 15px;
+    margin-bottom: 25px;
 }
 
 .btn-primary {
     background: #a6b1ff;
     color: black;
-    padding: 12px 22px;
+    padding: 12px 25px;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 .btn-secondary {
     border: 1px solid #a6b1ff;
     color: #4ea8ff;
-    padding: 12px 22px;
+    padding: 12px 25px;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 .btn-primary:hover {
@@ -169,34 +267,41 @@ html {
     color: black;
 }
 
+/* Social icons */
 .Social {
-    margin-top: 25px;
-    text-align: left;
+    margin-top: 20px;
+    text-align: center; /* center semua */
 }
 
-/* icon sosial media */
-.Social .wrapper {
-    display: flex;
-    gap: 20px;
-    margin-top: 15px;
-    justify-content: flex-start;
+.Social h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #272525;
+}
 
+.wrapper {
+    display: flex;
+    justify-content: center; /* center horizontal */
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .wrapper .icon {
     position: relative;
     width: 45px;
     height: 45px;
-    background: #ffffffd8;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: #ffffffd8;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #4a4a4a;
     font-size: 20px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .wrapper .icon:hover {
@@ -210,7 +315,7 @@ html {
     position: absolute;
     top: -30px;
     background: #333;
-    color: white;
+    color: #fff;
     padding: 5px 10px;
     border-radius: 6px;
     font-size: 12px;
@@ -225,6 +330,12 @@ html {
     pointer-events: auto;
 }
 
+
+/* Glow animation for h2 */
+@keyframes glowText {
+    from { text-shadow: 0 0 8px rgba(0,0,0,0.15); }
+    to { text-shadow: 0 0 18px rgba(140,140,255,0.4); }
+}
 
 
 /* -----------------------------------
@@ -371,7 +482,8 @@ html {
 
 .project-link {
     text-decoration: none;
-    color: #0d1117;
+    color: #e5eaf3;
+    font-weight: 600;
     background: #4ea8ff;
     padding: 8px 16px;
     border-radius: 8px;
@@ -379,7 +491,7 @@ html {
 }
 
 .project-link:hover {
-    background: #0d1117;
+    background: #5b7cad;
     color: #4ea8ff;
 }
 
@@ -658,102 +770,3 @@ html {
 }
 
 
-body, html {
-    margin: 0;
-    padding: 0;
-    
-    font-family: 'Poppins', sans-serif;
-    height: 100%;
-}
-
-.splash-screen {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    background: linear-gradient(135deg, #6e5cff, #99ccff, #ffffff);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-    text-align: center;
-}
-
-@keyframes gradientMove {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
-
-/* Teks di tengah */
-.tech-text {
-    font-size: 48px;
-    font-weight: bold;
-    color: #fff;
-    position: absolute;
-    top: 40%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: floatText 2s ease-in-out infinite alternate;
-    z-index: 10;
-}
-
-/* Float animation */
-@keyframes floatText {
-    0% {transform: translate(-50%, -50%) translateY(0);}
-    100% {transform: translate(-50%, -50%) translateY(-15px);}
-}
-
-/* Glitch effect */
-.tech-text::after,
-.tech-text::before {
-    content: 'Welcome to My Portfolio';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    color: #ff99ff;
-    clip: rect(0, 900px, 0, 0);
-    animation: glitch 2s infinite linear alternate-reverse;
-}
-
-.tech-text::before {
-    color: #99ffff;
-    animation-delay: 0.5s;
-}
-
-@keyframes glitch {
-    0% {clip: rect(0, 900px, 0, 0);}
-    10% {clip: rect(10px, 900px, 50px, 0);}
-    20% {clip: rect(20px, 900px, 60px, 0);}
-    30% {clip: rect(5px, 900px, 55px, 0);}
-    40% {clip: rect(15px, 900px, 45px, 0);}
-    50% {clip: rect(0px, 900px, 60px, 0);}
-    60% {clip: rect(10px, 900px, 50px, 0);}
-    70% {clip: rect(20px, 900px, 60px, 0);}
-    80% {clip: rect(5px, 900px, 55px, 0);}
-    90% {clip: rect(15px, 900px, 45px, 0);}
-    100% {clip: rect(0, 900px, 0, 0);}
-}
-
-/* Tombol masuk */
-.enter-button {
-    position: absolute;
-    top: 60%; /* di bawah tulisan */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 40px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.1);
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.enter-button:hover {
-    background: rgba(255,255,255,0.3);
-    color: #6e5cff;
-    border-color: #6e5cff;
-    box-shadow: 0 0 15px rgba(110, 92, 255, 0.7);
-}
