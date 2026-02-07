@@ -1,206 +1,176 @@
-/* ================================
-   NAVBAR SCROLL EFFECT
+/* ===============================
+   1. HERO CANVAS ANIMATION
 ================================ */
-window.addEventListener("scroll", () => {
-    const navbar = document.querySelector("nav");
 
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-});
+const canvas = document.getElementById("hero-canvas");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+// Particle setup
+const particles = [];
+const totalParticles = 60;
+
+for (let i = 0; i < totalParticles; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 1,
+        speedY: (Math.random() - 0.5) * 1,
+    });
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+        ctx.fillStyle = "rgba(120, 120, 255, 0.5)";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
 
 
-/* ================================
-   SMOOTH SCROLL
+/* ===============================
+   2. SMOOTH SCROLL NAVBAR
 ================================ */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
+
+document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", e => {
         e.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
 
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
+        window.scrollTo({
+            top: target.offsetTop - 50,
             behavior: "smooth"
         });
     });
 });
 
 
-/* ================================
-   REVEAL ANIMATION ON SCROLL
+/* ===============================
+   3. NAVBAR ACTIVE LINK
 ================================ */
-const revealElements = document.querySelectorAll(".reveal");
 
-function revealOnScroll() {
-    revealElements.forEach(el => {
-        const position = el.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-        if (position < screenHeight - 100) {
-            el.classList.add("active");
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(sec => {
+        const top = window.scrollY;
+        if (top >= sec.offsetTop - 200) {
+            current = sec.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(a => {
+        a.classList.remove("active");
+        if (a.getAttribute("href") === "#" + current) {
+            a.classList.add("active");
+        }
+    });
+});
+
+
+/* ===============================
+   4. FADE-IN ON SCROLL
+================================ */
+
+const fadeElements = document.querySelectorAll(
+    ".about-container, .skills-container, .projects-container, .contact-container"
+);
+
+function scrollAnimation() {
+    fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            el.classList.add("fade-in");
         }
     });
 }
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+window.addEventListener("scroll", scrollAnimation);
+scrollAnimation();
 
 
-/* ================================
-   BUTTON RIPPLE EFFECT
+/* ===============================
+   5. OPTIONAL – MOBILE NAV
 ================================ */
-document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
-    btn.addEventListener("click", function (e) {
-        const ripple = document.createElement("span");
-        ripple.classList.add("ripple");
-        this.appendChild(ripple);
 
-        ripple.style.left = `${e.clientX - this.offsetLeft}px`;
-        ripple.style.top = `${e.clientY - this.offsetTop}px`;
+const nav = document.querySelector(".navbar");
+const burger = document.querySelector(".burger");
 
-        setTimeout(() => ripple.remove(), 600);
+if (burger) {
+    burger.addEventListener("click", () => {
+        nav.classList.toggle("open");
     });
-});
-
-
-/* ================================
-   PROJECT IMAGE HOVER (POP)
-================================ */
-document.querySelectorAll('.project-card img').forEach(img => {
-    img.addEventListener('mouseenter', () => {
-        img.style.transform = "scale(1.05)";
-    });
-    img.addEventListener('mouseleave', () => {
-        img.style.transform = "scale(1)";
-    });
-});
-
-
-/* ================================
-   ABOUT SECTION ANIMATION (LEFT-RIGHT)
-================================ */
-const aboutText = document.querySelector(".about-text");
-const aboutImage = document.querySelector(".about-image");
-
-function aboutAnimation() {
-    const trigger = window.innerHeight - 120;
-
-    if (aboutText && aboutText.getBoundingClientRect().top < trigger) {
-        aboutText.classList.add("animate");
-    }
-    if (aboutImage && aboutImage.getBoundingClientRect().top < trigger) {
-        aboutImage.classList.add("animate");
-    }
 }
-
-window.addEventListener("scroll", aboutAnimation);
-aboutAnimation();
-
-
-/* ================================
-   SOCIAL ICON HOVER (optional)
-================================ */
-document.querySelectorAll(".icon").forEach(icon => {
-    icon.addEventListener("mouseenter", () => {
-        icon.classList.add("hovered");
-    });
-    icon.addEventListener("mouseleave", () => {
-        icon.classList.remove("hovered");
-    });
-});
 
 /* ================================
    BACKGROUND ANIMATION (CANVAS)
 ================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let lines = [];
-for(let i=0; i<30; i++){
-    lines.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        speed: 0.5 + Math.random(),
-        length: 50 + Math.random()*100
-    });
-}
-
-function animate(){
-    ctx.clearRect(0,0,canvas.width, canvas.height);
-    lines.forEach(line => {
-        ctx.beginPath();
-        ctx.moveTo(line.x, line.y);
-        ctx.lineTo(line.x + line.length, line.y);
-        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        line.x += line.speed;
-        if(line.x > canvas.width) line.x = -line.length;
-    });
-    requestAnimationFrame(animate);
-}
-
-animate();
-
-window.addEventListener('resize', ()=>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-// Redirect ke halaman portfolio setelah 2,5 detik
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            window.location.href = "index.html"; 
-        }, 5500);
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('hero-canvas');
+    const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // garis animasi neon
     let lines = [];
-    for(let i=0; i<50; i++){
+    for (let i = 0; i < 30; i++) {
         lines.push({
-            x: Math.random()*canvas.width,
-            y: Math.random()*canvas.height,
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
             speed: 0.5 + Math.random(),
-            length: 50 + Math.random()*150,
-            color: `rgba(110,92,255,${0.05 + Math.random()*0.2})`
+            length: 50 + Math.random() * 100
         });
     }
 
-    function animate(){
-        ctx.clearRect(0,0,canvas.width, canvas.height);
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         lines.forEach(line => {
             ctx.beginPath();
             ctx.moveTo(line.x, line.y);
             ctx.lineTo(line.x + line.length, line.y);
-            ctx.strokeStyle = line.color;
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
             ctx.lineWidth = 2;
             ctx.stroke();
 
             line.x += line.speed;
-            if(line.x > canvas.width) line.x = -line.length;
+            if (line.x > canvas.width) line.x = -line.length;
         });
         requestAnimationFrame(animate);
     }
 
     animate();
 
-    window.addEventListener('resize', ()=>{
+    window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     });
-});
 
+    // Redirect ke portofolio.html setelah 5.5 detik
+    setTimeout(() => {
+        window.location.href = "portofolio.html";
+    }, 5500);
+});
