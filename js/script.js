@@ -52,17 +52,21 @@ animateParticles();
    2. SMOOTH SCROLL NAVBAR
 ================================ */
 
-document.querySelectorAll("nav a").forEach(link => {
+document.querySelectorAll("nav a, .hero-buttons a").forEach(link => {
     link.addEventListener("click", e => {
+
+        // Jika link eksternal → jangan smooth scroll
+        if (link.href.startsWith("http")) return;
+
         e.preventDefault();
         const target = document.querySelector(link.getAttribute("href"));
-
         window.scrollTo({
             top: target.offsetTop - 50,
             behavior: "smooth"
         });
     });
 });
+
 
 
 /* ===============================
