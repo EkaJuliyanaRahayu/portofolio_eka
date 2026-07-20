@@ -3,16 +3,577 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Splash Screen</title>
-    <link rel="stylesheet" href="./css/stylessplash.css">
-</head>
-<body>
-    <div class="splash-screen">
-        <h1 class="tech-text">Welcome to My Portfolio</h1>
-        <a href="portofolio.html" class="enter-button">Let's See</a>
-    </div>
+    <title>Eka Juliyana Rahayu | Data Science & Software Engineering Portfolio</title>
+    <meta name="description" content="Portfolio of Eka Juliyana Rahayu — Informatics Engineering student skilled in data science, machine learning, and full-stack web development. Seeking internship opportunities.">
+    <meta name="author" content="Eka Juliyana Rahayu">
 
-     <canvas id="bg-canvas"></canvas>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Eka Juliyana Rahayu | Portfolio">
+    <meta property="og:description" content="Data Science & Software Engineering portfolio showcasing ML projects, full-stack applications, and distributed systems.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- SKIP LINK (accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="#home" class="nav-logo">EJR</a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+            <div class="hero-content">
+                <span class="hero-label">Informatics Engineering Student</span>
+                <h1>Eka Juliyana Rahayu</h1>
+
+                <div class="hero-typed-wrapper">
+                    <span class="hero-typed-prefix">Aspiring</span>
+                    <span class="hero-typed" id="typed-text"></span>
+                    <span class="typed-cursor" aria-hidden="true">|</span>
+                </div>
+
+                <p class="hero-description">
+                    I build machine learning models, analyze data for insights, and develop 
+                    full-stack applications. Currently seeking internship opportunities 
+                    to grow and contribute to meaningful projects.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="https://drive.google.com/file/d/1EpjedrcA36BhjqMKDWU5cHmLQtMKnCCc/view?usp=drive_link"
+                       class="btn btn-secondary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+
+                <div class="hero-socials">
+                    <a href="https://www.linkedin.com/in/ekarahayu24/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/EkaJuliyanaRahayu" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:eka610407@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ekajlyn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-scroll-indicator" aria-hidden="true">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section about" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image reveal">
+                        <img src="./assets/ekacantik.png" alt="Photo of Eka Juliyana Rahayu" width="300" height="300">
+                    </div>
+                    <div class="about-text reveal">
+                        <h2 class="section-title">About Me</h2>
+                        <div class="section-divider"></div>
+                        <p>
+                            I'm an Informatics Engineering student who works at the intersection of data 
+                            and software. My journey started with web development — building full-stack 
+                            applications from the ground up — and has since grown into a strong interest 
+                            in data science and machine learning.
+                        </p>
+                        <p>
+                            I've trained ML models to predict housing prices, developed secure web 
+                            applications with encrypted data handling, and designed distributed systems 
+                            that handle server failover automatically. Each project pushed me to learn 
+                            something new, and I'm always looking for the next challenge.
+                        </p>
+                        <p>
+                            I'm actively seeking internship opportunities where I can contribute 
+                            to real projects, learn from experienced teams, and grow as a data scientist 
+                            and engineer.
+                        </p>
+
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">Projects Built</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">10+</span>
+                                <span class="stat-label">Technologies</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Focus Areas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section skills" id="skills">
+            <div class="container">
+                <h2 class="section-title text-center reveal">Technical Skills</h2>
+                <div class="section-divider center reveal"></div>
+                <p class="section-subtitle text-center reveal">
+                    Technologies and tools I use for development, data analysis, and machine learning.
+                </p>
+
+                <div class="skills-grid">
+                    <!-- Programming Languages -->
+                    <div class="skill-category reveal">
+                        <div class="skill-category-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Programming Languages</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="skill-tag"><i class="fab fa-php"></i> PHP</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Science & ML -->
+                    <div class="skill-category reveal">
+                        <div class="skill-category-header">
+                            <i class="fas fa-brain"></i>
+                            <h3>Data Science & ML</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Scikit-Learn</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">Matplotlib</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Analysis -->
+                    <div class="skill-category reveal">
+                        <div class="skill-category-header">
+                            <i class="fas fa-chart-bar"></i>
+                            <h3>Data Analysis</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Exploratory Data Analysis</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">Data Cleaning</span>
+                            <span class="skill-tag">Statistical Analysis</span>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="skill-category reveal">
+                        <div class="skill-category-header">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Web Development</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fab fa-react"></i> React</span>
+                            <span class="skill-tag"><i class="fab fa-node-js"></i> Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</span>
+                            <span class="skill-tag">CodeIgniter 4</span>
+                            <span class="skill-tag"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+
+                    <!-- Databases -->
+                    <div class="skill-category reveal">
+                        <div class="skill-category-header">
+                            <i class="fas fa-database"></i>
+                            <h3>Databases</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">SQLite</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Technologies -->
+                    <div class="skill-category reveal">
+                        <div class="skill-category-header">
+                            <i class="fas fa-tools"></i>
+                            <h3>Tools & Technologies</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+                            <span class="skill-tag"><i class="fab fa-github"></i> GitHub</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag"><i class="fab fa-figma"></i> Figma</span>
+                            <span class="skill-tag">Google Colab</span>
+                            <span class="skill-tag">Jupyter Notebook</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section projects" id="projects">
+            <div class="container">
+                <h2 class="section-title text-center reveal">Featured Projects</h2>
+                <div class="section-divider center reveal"></div>
+                <p class="section-subtitle text-center reveal">
+                    Each project reflects a real problem I wanted to solve. Here's what I've built.
+                </p>
+
+                <div class="project-grid">
+
+                    <!-- Project 1: House Price Prediction (most relevant) -->
+                    <article class="project-card reveal">
+                        <div class="project-image">
+                            <img src="./assets/houseprice.png" 
+                                 alt="House Price Prediction dashboard showing ML model predictions" 
+                                 loading="lazy" width="600" height="340">
+                            <span class="project-badge">Machine Learning</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>House Price Prediction</h3>
+                            <p class="project-problem">
+                                <strong>Problem:</strong> Predicting housing prices requires analyzing 
+                                multiple variables and identifying patterns across complex datasets.
+                            </p>
+                            <p class="project-solution">
+                                <strong>Solution:</strong> Built an end-to-end ML pipeline — from 
+                                exploratory data analysis and feature engineering to model training — 
+                                then deployed it as an interactive web app using Streamlit for real-time predictions.
+                            </p>
+                            <div class="tech-stack">
+                                <span><i class="fab fa-python"></i> Python</span>
+                                <span>Scikit-Learn</span>
+                                <span>Pandas</span>
+                                <span>NumPy</span>
+                                <span>Streamlit</span>
+                                <span>Google Colab</span>
+                            </div>
+                            <a href="https://prediksihargarumah-bqnz7xuum2d3esfb7mxa29.streamlit.app/" 
+                               class="project-link" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: UMKM Management System -->
+                    <article class="project-card reveal">
+                        <div class="project-image">
+                            <img src="./assets/aqilahcakes.png" 
+                                 alt="UMKM Management System dashboard with product and sales management" 
+                                 loading="lazy" width="600" height="340">
+                            <span class="project-badge">Full-Stack</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>UMKM Management System</h3>
+                            <p class="project-problem">
+                                <strong>Problem:</strong> Small businesses need affordable digital tools 
+                                to manage products, sales, and finances securely.
+                            </p>
+                            <p class="project-solution">
+                                <strong>Solution:</strong> Developed a fullstack web app with React and 
+                                Node.js featuring JWT authentication, AES encryption for sensitive data, 
+                                CRUD operations with image upload, and a sales analytics dashboard.
+                            </p>
+                            <div class="tech-stack">
+                                <span><i class="fab fa-react"></i> React</span>
+                                <span><i class="fab fa-node-js"></i> Node.js</span>
+                                <span>Express</span>
+                                <span>MongoDB</span>
+                                <span>Tailwind CSS</span>
+                                <span>JWT & AES</span>
+                            </div>
+                            <a href="https://github.com/EkaJuliyanaRahayu/AES-UMKM_exam.git" 
+                               class="project-link" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: File Storage System -->
+                    <article class="project-card reveal">
+                        <div class="project-image">
+                            <img src="./assets/file.png" 
+                                 alt="Distributed file storage system architecture diagram" 
+                                 loading="lazy" width="600" height="340">
+                            <span class="project-badge">Systems Engineering</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Distributed File Storage</h3>
+                            <p class="project-problem">
+                                <strong>Problem:</strong> Single-server file storage creates a single 
+                                point of failure for critical data.
+                            </p>
+                            <p class="project-solution">
+                                <strong>Solution:</strong> Built a distributed storage system across 
+                                three virtual servers with master-slave architecture, using Nginx for 
+                                load balancing, Keepalived for automatic failover, and rsync for 
+                                real-time file replication.
+                            </p>
+                            <div class="tech-stack">
+                                <span><i class="fab fa-node-js"></i> Node.js</span>
+                                <span>SQLite</span>
+                                <span>Nginx</span>
+                                <span>Keepalived</span>
+                                <span>Rsync</span>
+                                <span>VirtualBox</span>
+                            </div>
+                            <a href="https://github.com/EkaJuliyanaRahayu/myfile_.git" 
+                               class="project-link" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Article Management -->
+                    <article class="project-card reveal">
+                        <div class="project-image">
+                            <img src="./assets/artikel.png" 
+                                 alt="Article management CMS interface with CRUD operations" 
+                                 loading="lazy" width="600" height="340">
+                            <span class="project-badge">Web Development</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Article Management CMS</h3>
+                            <p class="project-problem">
+                                <strong>Problem:</strong> Content platforms need reliable systems for 
+                                creating, managing, and publishing articles with modern frontend integration.
+                            </p>
+                            <p class="project-solution">
+                                <strong>Solution:</strong> Built a CMS with CodeIgniter 4 supporting full 
+                                CRUD operations, draft/publish workflow, and search functionality. 
+                                Integrated a RESTful API consumed by a Vue.js 3 frontend via Axios.
+                            </p>
+                            <div class="tech-stack">
+                                <span><i class="fab fa-php"></i> PHP</span>
+                                <span>CodeIgniter 4</span>
+                                <span>MySQL</span>
+                                <span><i class="fab fa-vuejs"></i> Vue.js 3</span>
+                                <span>REST API</span>
+                                <span>Axios</span>
+                            </div>
+                            <a href="https://github.com/EkaJuliyanaRahayu/Lab7_web-final.git" 
+                               class="project-link" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 5: Amarta -->
+                    <article class="project-card reveal">
+                        <div class="project-image">
+                            <img src="./assets/amarta.jpg" 
+                                 alt="Amarta UI/UX design system created in Figma" 
+                                 loading="lazy" width="600" height="340">
+                            <span class="project-badge">UI/UX Design</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Amarta — Design System</h3>
+                            <p class="project-problem">
+                                <strong>Problem:</strong> Consistent design across complex applications 
+                                requires a systematic approach to visual elements.
+                            </p>
+                            <p class="project-solution">
+                                <strong>Solution:</strong> Created a comprehensive Design System in Figma 
+                                including color palettes, typography scale, spacing rules, and reusable 
+                                UI components to maintain visual consistency across the project.
+                            </p>
+                            <div class="tech-stack">
+                                <span><i class="fab fa-figma"></i> Figma</span>
+                                <span>UI/UX Design</span>
+                                <span>Design System</span>
+                                <span>Prototyping</span>
+                            </div>
+                            <span class="project-link project-link-disabled">
+                                <i class="fas fa-lock"></i> Private Project
+                            </span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section education" id="education">
+            <div class="container">
+                <h2 class="section-title text-center reveal">Education</h2>
+                <div class="section-divider center reveal"></div>
+
+                <div class="education-grid">
+                    <div class="education-card reveal">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="education-details">
+                            <h3>Bachelor of Informatics Engineering</h3>
+                            <!-- UPDATE: Replace with your university name -->
+                            <p class="education-school">Universitas Pelita Bangsa</p>
+                            <!-- UPDATE: Replace with your actual years -->
+                            <p class="education-year"><i class="far fa-calendar-alt"></i> 2022 — Present</p>
+                            <div class="education-coursework">
+                                <h4>Relevant Coursework</h4>
+                                <div class="coursework-tags">
+                                    <span>Data Structures & Algorithms</span>
+                                    <span>Database Systems</span>
+                                    <span>Web Programming</span>
+                                    <span>Machine Learning</span>
+                                    <span>Computer Networks</span>
+                                    <span>Software Engineering</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <h2 class="section-title text-center reveal">Get In Touch</h2>
+                <div class="section-divider center reveal"></div>
+                <p class="section-subtitle text-center reveal">
+                    Interested in working together or have an opportunity to discuss? 
+                    I'd love to hear from you.
+                </p>
+
+                <div class="contact-grid">
+                    <form class="contact-form reveal" id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Name</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" rows="5" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+
+                    <div class="contact-info reveal">
+                        <h3>Let's Connect</h3>
+                        <p>Feel free to reach out through any of these channels.</p>
+
+                        <div class="contact-links">
+                            <a href="mailto:eka610407@gmail.com" class="contact-link-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <span class="contact-link-label">Email</span>
+                                    <span class="contact-link-value">eka610407@gmail.com</span>
+                                </div>
+                            </a>
+                            <a href="https://wa.me/6287772518549" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <div>
+                                    <span class="contact-link-label">WhatsApp</span>
+                                    <span class="contact-link-value">+62 877-7251-8549</span>
+                                </div>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ekarahayu24/" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                                <i class="fab fa-linkedin-in"></i>
+                                <div>
+                                    <span class="contact-link-label">LinkedIn</span>
+                                    <span class="contact-link-value">linkedin.com/in/ekarahayu24</span>
+                                </div>
+                            </a>
+                            <a href="https://github.com/EkaJuliyanaRahayu" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                                <i class="fab fa-github"></i>
+                                <div>
+                                    <span class="contact-link-label">GitHub</span>
+                                    <span class="contact-link-value">EkaJuliyanaRahayu</span>
+                                </div>
+                            </a>
+                            <div class="contact-link-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span class="contact-link-label">Location</span>
+                                    <span class="contact-link-value">Indonesia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">EJR</span>
+                    <p>Building with data and code.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/ekarahayu24/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/EkaJuliyanaRahayu" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/ekajlyn/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eka Juliyana Rahayu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="./js/script.js"></script>
 </body>
 </html>
